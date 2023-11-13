@@ -1,5 +1,7 @@
 package com.code;
 
+import javax.servlet.ServletOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,5 +36,17 @@ public class Response extends AbstractHttpServletResponse {
     @Override
     public void addHeader(String s, String s1) {
         headers.put(s, s1);
+    }
+
+    @Override
+    public ServletOutputStream getOutputStream() throws IOException {
+        return super.getOutputStream();
+    }
+
+    /**
+     * 发送响应
+     */
+    public void complete() {
+
     }
 }

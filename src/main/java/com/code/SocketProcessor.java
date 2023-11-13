@@ -81,9 +81,13 @@ public class SocketProcessor implements Runnable {
 
             Request request = new Request(method, url, protocol);
             Response response = new Response();
+
             // 根据request匹配servlet、执行doGet/doPost方法
             Servlet servlet = new Servlet();
             servlet.service(request, response);
+
+            // 发送响应
+            response.complete();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
