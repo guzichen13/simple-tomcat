@@ -47,6 +47,9 @@ public class Response extends AbstractHttpServletResponse {
      */
     private byte LF = '\n';
 
+    /**
+     * 响应体数据
+     */
     private ResponseServletOutputStream responseServletOutputStream = new ResponseServletOutputStream();
 
     /**
