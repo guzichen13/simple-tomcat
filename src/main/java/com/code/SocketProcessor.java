@@ -80,8 +80,11 @@ public class SocketProcessor implements Runnable {
             System.out.println("protocol = " + protocol);
 
             Request request = new Request(method, url, protocol);
+            Response response = new Response();
             // 根据request匹配servlet、执行doGet/doPost方法
-        } catch (IOException e) {
+            Servlet servlet = new Servlet();
+            servlet.service(request, response);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
