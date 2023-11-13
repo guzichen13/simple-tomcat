@@ -1,6 +1,5 @@
 package com.code;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 
@@ -79,8 +78,8 @@ public class SocketProcessor implements Runnable {
 
             System.out.println("protocol = " + protocol);
 
-            Request request = new Request(method, url, protocol);
-            Response response = new Response();
+            Request request = new Request(method, url, protocol, socket);
+            Response response = new Response(request);
 
             // 根据request匹配servlet、执行doGet/doPost方法
             Servlet servlet = new Servlet();

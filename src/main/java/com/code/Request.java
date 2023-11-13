@@ -1,5 +1,7 @@
 package com.code;
 
+import java.net.Socket;
+
 public class Request extends AbstractHttpServletRequest {
 
     /**
@@ -15,10 +17,16 @@ public class Request extends AbstractHttpServletRequest {
      */
     private String protocol;
 
-    public Request(StringBuffer method, StringBuffer url, StringBuffer protocol) {
+    /**
+     * 请求对应的socket连接
+     */
+    private Socket socket;
+
+    public Request(StringBuffer method, StringBuffer url, StringBuffer protocol, Socket socket) {
         this.method = method.toString();
         this.url = url.toString();
         this.protocol = protocol.toString();
+        this.socket = socket;
     }
 
     @Override
@@ -34,5 +42,9 @@ public class Request extends AbstractHttpServletRequest {
     @Override
     public String getProtocol() {
         return protocol;
+    }
+
+    public Socket getSocket() {
+        return socket;
     }
 }
